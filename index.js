@@ -1,30 +1,46 @@
-const { train } = require("./lib/train.js");
-const run = require("./lib/run.js");
-const load = require("./lib/load.js");
+(async () => {
+  const { train } = require("./lib/train.js");
+  const run = require("./lib/run.js");
+  const load = require("./lib/load.js");
+  const toxicity = require("@tensorflow-models/toxicity");
 
-//
-let model;
+  const [model, toxic] = await Promise.all([load("Model"), toxicity.load(0.9)]);
 
-const fastify = require("fastify")({
-  logger: true,
-});
+  const fastify = require("fastify")({
+    logger: true,
+  });
 
-fastify.get("/", async (req, reply) => {
-  const { text } = req.query;
+  async function isToxic(text) {
+    const predictions = await toxic.classify(text);
 
-  console.log(text);
+    console.log(predictions);
 
-  let result = await run(model, text);
+    for (const prediction of predictions) {
+      for (const result of prediction.results) {
+        if (result.match == true) {
+          return true;
+        }
+      }
+    }
 
-  return result;
-});
-
-fastify.listen(3000, async (err, address) => {
-  if (err) {
-    fastify.log.error(err);
-    process.exit(1);
+    return false;
   }
-  fastify.log.info(`server listening on ${address}`);
 
-  model = await load("Model");
-});
+  fastify.get("/", async (req, reply) => {
+    const { text } = req.query;
+
+    console.log(text);
+
+    let results = await Promise.all([run(model, text), isToxic(text)]);
+
+    return { type: results[0].highest, isToxic: results[1] };
+  });
+
+  fastify.listen(3000, async (err, address) => {
+    if (err) {
+      fastify.log.error(err);
+      process.exit(1);
+    }
+    fastify.log.info(`server listening on ${address}`);
+  });
+})();
