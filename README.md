@@ -5,3 +5,8 @@ install dependencies:
 
 run:
 `yarn start`
+
+then access `localhost:3000/?text=hello what is your name` to test it
+
+train:
+`yarn train`

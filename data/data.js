@@ -1,36 +1,62 @@
-const fs = require("fs");
+const fs = require("fs").promises;
 const path = require("path");
 const isWhitespace = require("is-whitespace");
 
-let trainingData = [];
-let intents = [];
+async function getOnlyFiles(dirPath) {
+  let files = [];
+  const filesAndDirs = await fs.readdir(dirPath);
 
-function getTrainingData(dirPath) {
-  const files = fs.readdirSync(dirPath);
-
-  for (let i = 0; i < files.length; i++) {
-    const file = files[i];
-
-    // if its a directory go trough its files
+  for (const file of filesAndDirs) {
     const filePath = path.join(dirPath, file);
-    if (fs.statSync(filePath).isDirectory()) {
-      getTrainingData(filePath);
+    const isDir = await fs.stat(filePath);
+
+    if (isDir.isDirectory()) {
+      // read the files recursively in directories
+      const inDirFiles = await getOnlyFiles(filePath);
+
+      files.push(...inDirFiles);
       continue;
     }
 
-    // its a file
-    if (!file.includes(".txt")) {
+    if (!file.includes(".t.txt")) {
+      // its not a train file
       continue;
     }
 
+    // its a train file
+    files.push(filePath);
+  }
+
+  return files;
+}
+
+async function getTrainingData(dirPath = __dirname) {
+  let trainingData = [];
+  const tensor = {
+    intents: [],
+    mapping(t) {
+      let map = [];
+
+      for (let i = 0; i < tensor.intents.length; i++) {
+        const intent = tensor.intents[i];
+
+        map.push(t.intent == intent ? 1 : 0);
+      }
+
+      return map;
+    },
+  };
+
+  const files = await getOnlyFiles(dirPath);
+  for (const filePath of files) {
     // read the file
-    const intent = file.split(".txt")[0];
-    const fileData = fs.readFileSync(filePath, { encoding: "utf-8" });
+    const file = path.basename(filePath);
+    const intent = file.split(".t.txt")[0];
+
+    const fileData = await fs.readFile(filePath, { encoding: "utf-8" });
     const lines = fileData.split("\n");
 
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i];
-
+    for (const line of lines) {
       if (line.length < 2 || isWhitespace(line)) {
         continue;
       }
@@ -41,25 +67,10 @@ function getTrainingData(dirPath) {
       });
     }
 
-    intents.push(intent);
+    tensor.intents.push(intent);
   }
+
+  return { trainingData, tensor };
 }
 
-getTrainingData(__dirname);
-
-const tensor = {
-  intents,
-  mapping(t) {
-    let map = [];
-
-    for (let i = 0; i < tensor.intents.length; i++) {
-      const intent = tensor.intents[i];
-
-      map.push(t.intent == intent ? 1 : 0);
-    }
-
-    return map;
-  },
-};
-
-module.exports = { trainingData, tensor };
+module.exports = getTrainingData;
