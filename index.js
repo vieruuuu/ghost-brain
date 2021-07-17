@@ -2,7 +2,7 @@
   const { train } = require("./lib/train.js");
   const run = require("./lib/run.js");
   const load = require("./lib/load.js");
-  const toxicity = require("@tensorflow-models/toxicity");
+  const toxicity = require("./lib/toxicity");
 
   const [model, toxic] = await Promise.all([load("Model"), toxicity.load(0.9)]);
 

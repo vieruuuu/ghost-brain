@@ -5,6 +5,7 @@
     "pretrained",
     "softmax",
     "tensorflow",
+    "tfcore",
     "tfjs"
   ]
 }
