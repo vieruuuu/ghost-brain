@@ -30,6 +30,22 @@ async function getOnlyFiles(dirPath) {
   return files;
 }
 
+async function ifTrainingData(line) {
+  if (line.length < 2) {
+    return false;
+  }
+
+  if (isWhitespace(line)) {
+    return false;
+  }
+
+  if (line.includes("//")) {
+    return false;
+  }
+
+  return true;
+}
+
 async function getTrainingData(dirPath = __dirname) {
   let trainingData = [];
   const tensor = {
@@ -57,7 +73,8 @@ async function getTrainingData(dirPath = __dirname) {
     const lines = fileData.split("\n");
 
     for (const line of lines) {
-      if (line.length < 2 || isWhitespace(line)) {
+      const isTrainingData = await ifTrainingData(line);
+      if (!isTrainingData) {
         continue;
       }
 

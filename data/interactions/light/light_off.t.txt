@@ -1,8 +1,18 @@
 turn off the light
 turn off the lights
+turn off the light switch
+turn the lights back off
+turn the light back off
+turn the light off
+turn the lights off
+can you turn the lights off
+can you turn the light off
+would you like to turn off the lights
+would you like to turn off the light
+
+// this is a comment
 kill the lights
 kill the light
-turn off the light switch
 shut the light off
 shut the lights off
 click the light switch off
@@ -13,8 +23,6 @@ cut off the lights
 cut off the light
 can you cut off the lights
 can you cut off the light
-would you like to turn off the lights
-would you like to turn off the light
 switch off the light
 put out the lights
 put out the light
@@ -29,10 +37,6 @@ just take out the light
 just take out the lights
 have the lights off
 have the light off
-turn the lights back off
-turn the light back off
-can you turn the lights off
-can you turn the light off
 
 i like staying in a dark room please turn off the lights
 i like staying in a dark room please turn off the light
