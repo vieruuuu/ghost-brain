@@ -3,6 +3,10 @@
   const run = require("./lib/run.js");
   const load = require("./lib/load.js");
   const toxicity = require("./lib/toxicity");
+  const { NewEntity, GhostTypes } = require("./ghosts");
+  const g = new NewEntity(GhostTypes.Pricolici);
+
+  await g.gen();
 
   const [model, toxic] = await Promise.all([load("Model"), toxicity.load(0.9)]);
 
@@ -12,8 +16,6 @@
 
   async function isToxic(text) {
     const predictions = await toxic.classify(text);
-
-    console.log(predictions);
 
     for (const prediction of predictions) {
       for (const result of prediction.results) {
@@ -29,9 +31,14 @@
   fastify.get("/", async (req, reply) => {
     const { text } = req.query;
 
-    console.log(text);
+    const results = await Promise.all([run(model, text), isToxic(text)]);
 
-    let results = await Promise.all([run(model, text), isToxic(text)]);
+    switch (results[0].highest) {
+      case "name_text":
+        return g.name.lastName + " " + g.name.firstName;
+      case "age_number":
+        return g.age;
+    }
 
     return { type: results[0].highest, isToxic: results[1] };
   });

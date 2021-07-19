@@ -1,51 +1,85 @@
-const randomName = require("./generators/name");
-const randomGender = require("./generators/gender");
+const { generateName, generateGender, generateAge } = require("./generators");
 
-const GhostTypes = {
-  Pricolici: {
-    randomGender: true,
-    name: true,
-    age: [20, 60],
-  },
-  Moroi: {
-    randomGender: true,
-    name: true,
-    age: [20, 60],
-  },
-  Strigoi: {
-    randomGender: true,
-    name: true,
-    age: [20, 60],
-  },
-  Samca: {
-    randomGender: false,
-    gender: "female",
-    name: false,
-    age: [-1],
+const HumanTypes = {
+  Normal: {
+    genGender: true,
+    hasName: true,
+    hasAge: true,
+    ageInterval: [20, 60],
   },
 };
 
-class Ghost {
-  #props = {};
-  name = "Hello";
+const GhostTypes = {
+  Pricolici: {
+    genGender: true,
+    hasName: true,
+    hasAge: true,
+    ageInterval: [20, 60],
+  },
+  Moroi: {
+    genGender: true,
+    hasName: true,
+    hasAge: true,
+    ageInterval: [20, 60],
+  },
+  Strigoi: {
+    genGender: true,
+    hasName: true,
+    hasAge: true,
+    ageInterval: [20, 60],
+  },
+  Samca: {
+    genGender: false,
+    gender: "female",
+    hasName: false,
+    hasAge: false,
+  },
+};
+
+class NewEntity {
+  #props = {
+    genGender: true,
+    gender: "",
+    hasName: true,
+    name: { lastName: "", firstName: "" },
+    hasAge: false,
+    ageInterval: [0, 0],
+    age: 0,
+  };
 
   constructor(props) {
-    this.props = props;
+    this.#props = { ...this.#props, ...props };
   }
 
   async gen() {
-    const gender = await randomGender();
+    await generateGender(this.#props);
 
-    this.props.gender = gender;
+    await generateName(this.#props);
 
-    const name = await randomName(this.props);
+    await generateAge(this.#props);
 
-    console.log(name);
+    console.log(this.#props);
+  }
+
+  get name() {
+    return this.#props.name;
+  }
+  get age() {
+    return this.#props.age;
+  }
+  get gender() {
+    return this.#props.age;
   }
 }
 
 (async () => {
-  const g = new Ghost(GhostTypes.Moroi);
+  const g = new NewEntity(GhostTypes.Pricolici);
 
   await g.gen();
 })();
+
+module.exports = {
+  GhostTypes,
+  HumanTypes,
+  NewEntity,
+};

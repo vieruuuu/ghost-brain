@@ -13,7 +13,11 @@ async function validName(random, names) {
   return validName(random, names);
 }
 
-async function randomName(props) {
+async function name(props) {
+  if (!props.hasName) {
+    return;
+  }
+
   const nameFolder = path.join(__dirname, "names");
 
   const lastNames = (await getFile([nameFolder, "lastname.txt"])).split("\n");
@@ -37,10 +41,8 @@ async function randomName(props) {
       break;
   }
 
-  return {
-    lastName,
-    firstName,
-  };
+  props.name.firstName = firstName;
+  props.name.lastName = lastName;
 }
 
-module.exports = randomName;
+module.exports = name;

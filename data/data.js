@@ -20,7 +20,7 @@ async function getTrainingData(dirPath = __dirname) {
   };
 
   const files = await getOnlyFiles(dirPath, ".t.txt");
-  console.log(files);
+
   for (const filePath of files) {
     // read the file
     const file = path.basename(filePath);
