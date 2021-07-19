@@ -5,7 +5,6 @@ Adelin
 Adi
 Adonis
 Adrian
-Agnos
 Ahile
 Albert
 Aleodor
@@ -22,11 +21,8 @@ Antim
 Anton
 Antonie
 Antoniu
-Arcadian
 Arian
-Aristide
 Arsenie
-Atanasio
 Augustin
 Aurel
 Aurelian
@@ -37,7 +33,6 @@ Barbu
 Bartolomeu
 Basarab
 Bănel
-Bebe
 Beniamin
 Benone
 Bernard
@@ -46,7 +41,6 @@ Brăduț
 Bucur
 Caius
 Camil
-Cantemir
 Carol
 Casian
 Cazimir
@@ -95,8 +89,6 @@ Dragomir
 Dragoș
 Ducu
 Dumitru
-Edgar
-Edmond
 Eduard
 Eftimie
 Emanoil
@@ -104,7 +96,6 @@ Emanuel
 Emanuil
 Emil
 Emilian
-Eremia
 Eric
 Ernest
 Eugen
@@ -149,9 +140,6 @@ Iacob
 Iacov
 Iancu
 Ianis
-Ieremia
-Ilarie
-Ilarion
 Ilie
 Iliuță
 Inocențiu
@@ -174,7 +162,6 @@ Ivan
 Jan
 Jean
 Jenel
-Ladislau
 Lascăr
 Laurențiu
 Laurian
@@ -207,7 +194,6 @@ Mihai
 Mihail
 Mihăiță
 Mihnea
-Mina
 Mircea
 Miron
 Mitică
@@ -220,7 +206,6 @@ Narcis
 Nechifor
 Nelu
 Nichifor
-Nicoară
 Nicodim
 Nicolae
 Nicolaie
@@ -228,9 +213,6 @@ Nicu
 Niculiță
 Nicușor
 Nicuță
-Norbert
-Noris
-Norman
 Octav
 Octavian
 Octaviu
@@ -240,7 +222,6 @@ Oliver
 Oliviu
 Ovidiu
 Pamfil
-Panagachie
 Panait
 Paul
 Pavel
@@ -268,7 +249,6 @@ Romică
 Romulus
 Sabin
 Sandu
-Sandu
 Sava
 Sebastian
 Septimiu
@@ -288,7 +268,6 @@ Stelian
 Ștefan
 Teodor
 Teofil
-Teohari
 Theodor
 Tiberiu
 Timotei
@@ -316,4 +295,3 @@ Vladimir
 Vlaicu
 Voicu
 Zamfir
-Zeno

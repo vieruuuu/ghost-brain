@@ -1,13 +1,10 @@
 Ada
 Adela
-Adelaida
 Adelina
 Adina
 Adriana
-Adnana
 Agata
 Aglaia
-Agripina
 Aida
 Alberta
 Albertina
@@ -24,8 +21,7 @@ Amanda
 Amelia
 Ana
 Anabela
-Anaida
-Anamaria
+Ana Maria
 Anastasia
 Anca
 Ancuța
@@ -58,11 +54,9 @@ Aurelia
 Aureliana
 Aurica
 Aurora
-Axenia
 Beatrice
 Betina
 Bianca
-Blanduzia
 Bogdana
 Brândușa
 Camelia
@@ -70,7 +64,6 @@ Carina
 Carla
 Carmen
 Carmina
-Carol
 Carolina
 Casandra
 Casiana
@@ -125,8 +118,6 @@ Domnica
 Dora
 Doriana
 Dorina
-Dorli
-Draga
 Dumbrăvița
 Dumitra
 Dumitrana
@@ -136,7 +127,6 @@ Elena
 Eleonora
 Eliana
 Elisabeta
-Elisaveta
 Eliza
 Elodia
 Elvira
@@ -170,7 +160,6 @@ Francesca
 Frusina
 Gabriela
 Geanina
-Gențiana
 Georgeta
 Georgia
 Georgiana
@@ -181,7 +170,6 @@ Gina
 Giorgiana
 Gloria
 Glorița
-Grațiana
 Grațiela
 Henrieta
 Heracleea
@@ -193,8 +181,8 @@ Ileana
 Ilinca
 Ilona
 Ina
+Inna
 Ioana
-Ioanina
 Iolanda
 Ionela
 Ionelia
@@ -205,14 +193,12 @@ Irina
 Iris
 Irma
 Isabela
-Isaura
 Iulia
 Iuliana
 Iustina
 Ivana
 Ivona
 Izabela
-Izaura
 Jana
 Janeta
 Janina
@@ -229,13 +215,11 @@ Lăcrămioara
 Leana
 Lelia
 Leontina
-Leopoldina
 Letiția
 Lenuța
 Lia
 Liana
 Lidia
-Ligia
 Lili
 Liliana
 Lioara
@@ -246,18 +230,15 @@ Lorena
 Luana
 Lucia
 Luciana
-Lucreția
 Ludmila
 Ludovica
 Luiza
 Luminița
 Magdalena
 Maia
-Malvina
 Manuela
 Mara
 Marcela
-Marcheta
 Marga
 Margareta
 Maria
@@ -426,12 +407,9 @@ Viviana
 Vlădelina
 Voichița
 Xenia
-Zaharia
 Zamfira
 Zaraza
-Zenaida
 Zenobia
-Zenovia
 Zina
 Zita
 Zoe
